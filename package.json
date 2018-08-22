@@ -1,0 +1,31 @@
+{
+  "name": "pwa01",
+  "version": "1.0.0",
+  "description": "The Test PWA Application v.01",
+  "main": "app.js",
+  "dependencies": {
+    "npm": "^6.4.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stokaboka/pwa01.git"
+  },
+  "keywords": [
+    "PWA"
+  ],
+  "author": "Igor Khorev igorhorev@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stokaboka/pwa01/issues"
+  },
+  "homepage": "https://github.com/stokaboka/pwa01#readme"
+}
