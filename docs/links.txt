@@ -1,0 +1,2 @@
+https://blog.logrocket.com/building-a-progressive-web-app-pwa-no-react-no-angular-no-vue-aefdded3b5e
+https://vaadin.com/pwa/build/production-pwa-with-webpack-and-workbox
