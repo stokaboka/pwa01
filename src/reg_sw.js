@@ -1,12 +1,11 @@
-
-function urlBase64ToUint8Array(base64String) {
-    const padding = '='.repeat((4 - base64String.length % 4) % 4);
-    const base64 = (base64String + padding)
-        .replace(/\-/g, '+')
-        .replace(/_/g, '/')
-    ;
-    const rawData = window.atob(base64);
-    return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
+async function registerServiceWorker(serviceWorker) {
+    try {
+        const registration = await navigator.serviceWorker.register(serviceWorker);
+        console.log('ServiceWorker registered: ', registration);
+        subscribeToPushNotifications(registration);
+    } catch (e) {
+        console.error('ServiceWorker failed', e);
+    }
 }
 
 async function subscribeToPushNotifications(registration) {
@@ -30,14 +29,14 @@ async function subscribeToPushNotifications(registration) {
     }
 }
 
-async function registerServiceWorker(serviceWorker) {
-    try {
-        const registration = await navigator.serviceWorker.register(serviceWorker);
-        console.log('ServiceWorker registered: ', registration);
-        subscribeToPushNotifications(registration);
-    } catch (e) {
-        console.error('ServiceWorker failed', e);
-    }
+function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
+        .replace(/\-/g, '+')
+        .replace(/_/g, '/')
+    ;
+    const rawData = window.atob(base64);
+    return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
 }
 
 const pushStatus = new Promise(resolve => {
