@@ -1,2 +1,10 @@
 https://blog.logrocket.com/building-a-progressive-web-app-pwa-no-react-no-angular-no-vue-aefdded3b5e
 https://vaadin.com/pwa/build/production-pwa-with-webpack-and-workbox
+
+https://developers.google.com/web/updates/2018/05/dpwa
+
+https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin
+https://developers.google.com/web/tools/workbox/modules/workbox-strategies
+https://developers.google.com/web/tools/workbox/guides/generate-service-worker/webpack
+
+https://developers.google.com/web/fundamentals/app-install-banners/
