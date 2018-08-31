@@ -1,6 +1,6 @@
 import './style.css';
-import { registerServiceWorker } from './api'
-import { loadMoreEntries } from "./ui";
+import { registerServiceWorker } from './reg_sw'
+import { loadMoreEntries } from "./api";
 
 let serviceWorkerName = '/service-worker.js';
 
