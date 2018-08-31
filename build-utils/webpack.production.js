@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = () => ({
     module: {
@@ -19,6 +20,9 @@ module.exports = () => ({
                 dry: false
             }
             ),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
+        new CopyWebpackPlugin([
+            'src/favicon.ico'
+        ])
     ]
 });

@@ -35,6 +35,6 @@ async function loadMoreEntries() {
 }
 
 loadMore.addEventListener('click', loadMoreEntries, false);
-loadMoreEntries();
+// loadMoreEntries();
 
 export { getPosts, getUsers, loadEntries, loadMoreEntries, appendEntries }

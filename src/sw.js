@@ -2,6 +2,8 @@
 Copyright
 */
 
+const apiUrl = 'https://jsonplaceholder.typicode.com';
+
 const files = [
     './',
     './app.js',
@@ -14,8 +16,6 @@ self.addEventListener('install', async e => {
     const cache = await caches.open('files');
     cache.addAll(files);
 });
-
-const apiUrl = 'https://jsonplaceholder.typicode.com';
 
 function isApiCall(req) {
     return req.url.startsWith(apiUrl);

@@ -1,11 +1,8 @@
-const WorkboxPlugin = require('workbox-webpack-plugin');
+const {GenerateSW} = require('workbox-webpack-plugin');
 
 module.exports = () => ({
     plugins: [
-        // new WorkboxPlugin.InjectManifest({
-        //     swSrc: './src/swx.js'
-        // })
-        new WorkboxPlugin.GenerateSW({
+        new GenerateSW({
             // these options encourage the ServiceWorkers to get in there fast
             // and not allow any straggling "old" SWs to hang around
             directoryIndex: 'index.html',
@@ -26,7 +23,8 @@ module.exports = () => ({
                         // Configure custom cache expiration.
                         expiration: {
                             maxEntries: 5,
-                            maxAgeSeconds: 60,
+                            // maxAgeSeconds: 60,
+                            maxAgeSeconds: 86400,
                         },
                         // Configure which responses are considered cacheable.
                         cacheableResponse: {
@@ -60,7 +58,7 @@ module.exports = () => ({
                             headers: {'x-test': 'true'},
                         },
                         broadcastUpdate: {
-                            channelName: 'my-update-channel',
+                            channelName: 'orangem-data-channel',
                         },
                         plugins: [
                             {
@@ -91,12 +89,12 @@ module.exports = () => ({
                         },
                         // Configure the broadcast cache update plugin.
                         broadcastUpdate: {
-                            channelName: 'my-update-channel',
+                            channelName: 'orangem-api-channel',
                         },
                         // Add in any additional plugin logic you need.
                         plugins: [
                             {
-                                cacheDidUpdate: () => /* custom plugin code */ console.log('jsonplaceholder: cacheDidUpdate')
+                                cacheDidUpdate: () => /* custom plugin code */ console.log('api: cacheDidUpdate')
                             }
                         ],
                     },

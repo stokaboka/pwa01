@@ -12,7 +12,10 @@ module.exports = () => ({
     },
     plugins: [
         // Copy empty ServiceWorker so install doesn't blow up
-        new CopyWebpackPlugin(['src/swx.js'])
+        new CopyWebpackPlugin([
+            'src/swx.js',
+            'src/favicon.ico'
+            ])
     ],
     devtool: 'source-map'
 });

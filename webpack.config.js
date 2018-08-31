@@ -22,7 +22,8 @@ module.exports = ({ mode, presets }) => {
         
         devServer:{
                 contentBase: './public',
-                https: true
+                // https: true
+                https: false
             },
         
         plugins: [

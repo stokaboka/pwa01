@@ -30,14 +30,15 @@ async function subscribeToPushNotifications(registration) {
     }
 }
 
-// async function registerServiceWorker() {
-//     try {
-//         const registration = await navigator.serviceWorker.register('sw.js');
-//         subscribeToPushNotifications(registration);
-//     } catch (e) {
-//         console.error('ServiceWorker failed', e);
-//     }
-// }
+async function registerServiceWorker(serviceWorker) {
+    try {
+        const registration = await navigator.serviceWorker.register(serviceWorker);
+        console.log('ServiceWorker registered: ', registration);
+        subscribeToPushNotifications(registration);
+    } catch (e) {
+        console.error('ServiceWorker failed', e);
+    }
+}
 
 const pushStatus = new Promise(resolve => {
     Notification.requestPermission(result => {
@@ -58,12 +59,4 @@ const pushStatus = new Promise(resolve => {
     });
 });
 
-// if ('serviceWorker' in navigator) {
-//     try {
-//         registerServiceWorker();
-//     } catch (e) {
-//         console.error(e);
-//     }
-// }
-
-export { subscribeToPushNotifications, pushStatus }
+export { registerServiceWorker, subscribeToPushNotifications, pushStatus }
