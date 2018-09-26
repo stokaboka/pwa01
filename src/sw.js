@@ -59,7 +59,8 @@ async function getFromCache(req) {
     if (!res) {
         // в кеше нет данных для запроса
         // отправляем запрос в сеть
-        return fetch(req);
+        // return fetch(req);
+        return getFromNetwork(req)
     }
     
     return res;
@@ -117,7 +118,7 @@ self.addEventListener('fetch', async e => {
     // прочие запросы - пытаемся получить результаты из кеша
     const res = isApiCall(req) ? getFromNetwork(req) : getFromCache(req);
     // подсовываем событию "fetch" результат сформированный нами
-    // в вызовах getFromNetwork || getFromCache
+    // в вызовах getFromNetwork или getFromCache
     // этот результат будет использован в нашем приложении
     await e.respondWith(res);
 });
