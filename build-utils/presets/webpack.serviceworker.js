@@ -1,3 +1,4 @@
+// загружаем workbox-webpack-plugin
 const {GenerateSW} = require('workbox-webpack-plugin');
 
 module.exports = () => ({
