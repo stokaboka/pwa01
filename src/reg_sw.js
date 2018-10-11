@@ -31,10 +31,15 @@ async function subscribeToPushNotifications(registration) {
             applicationServerKey: urlBase64ToUint8Array('BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDzkrxZJjSgSnfckjBJuBkr3qBUYIHBQFLXYp5Nksh8U'),
         };
         
+        // проверяем разрешение от пользователя
+        // обрабатывать PUSH уведомления
         const status = await pushStatus;
         
         if (status) {
+            // разрешение на уведомления есть
+            // пытаемся подписаться
             try {
+                // подписка на PUSH уведомления получена
                 const subscription = await registration.pushManager.subscribe(options);
                 console.log('Push registration registered', subscription);
                 //Received subscription
