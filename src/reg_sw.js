@@ -1,9 +1,18 @@
+/**
+ * регистрация service worker (любого)
+ * @param serviceWorker - имя фала js являющегося service worker
+ * @returns {Promise<void>}
+ */
 async function registerServiceWorker(serviceWorker) {
     try {
+        // регистрируем service worker
         const registration = await navigator.serviceWorker.register(serviceWorker);
         console.log('ServiceWorker registered: ', registration);
+        // пытаемся подписаться на PUSH уведомления
         subscribeToPushNotifications(registration);
     } catch (e) {
+        // что-то пошло не так
+        // скорее всего отсутствует поддержка service worker
         console.error('ServiceWorker failed', e);
     }
 }

@@ -5,6 +5,9 @@ import { registerServiceWorker } from './reg_sw'
 import { loadMoreEntries } from "./api";
 
 // имя файла service worker
+// этот файл сформирован на основе
+// нашего sw.js workbox-webpack-plugin - ом
+// имя файла задано в файле настройке webpack.manifest.js
 let serviceWorkerName = '/service-worker.js';
 
 // проверяем возможность обозревателем использовать service worker
