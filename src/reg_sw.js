@@ -17,8 +17,15 @@ async function registerServiceWorker(serviceWorker) {
     }
 }
 
+/**
+ * подписка на PUSH сообщения
+ * @param registration
+ * @returns {Promise<void>}
+ */
 async function subscribeToPushNotifications(registration) {
+    // проверяем возможность работать с PUSH сообщениями
     if ('pushManager' in registration) {
+        // опциональные параметры для подписки на Push уведомления
         const options = {
             userVisibleOnly: true,
             applicationServerKey: urlBase64ToUint8Array('BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDzkrxZJjSgSnfckjBJuBkr3qBUYIHBQFLXYp5Nksh8U'),
@@ -49,15 +56,19 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 const pushStatus = new Promise(resolve => {
+    // смотрим права на получение уведомлений,
+    // выставленные пользователем
     Notification.requestPermission(result => {
         const el = document.createElement('div');
         el.classList.add('push-info');
         
         if (result !== 'granted') {
+            // уведомления запрещены
             el.classList.add('inactive');
             el.textContent = 'Push blocked';
             resolve(false);
         } else {
+            // уведомления разрешены
             el.classList.add('active');
             el.textContent = 'Push active';
             resolve(true);
