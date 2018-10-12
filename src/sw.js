@@ -36,6 +36,14 @@ self.addEventListener('install', async e => {
     const cache = await caches.open('files');
     // сохраняем в кеше файлы приложения и заглушки для данных
     cache.addAll(files);
+    // проверяем создание отдельного потока
+    const appElement = document.getElementById('app');
+    console.log('Checking work in a separate thread...');
+    if ( appElement ){
+        console.log("   - separate thread");
+    } else {
+        console.log("   - general thread");
+    }
 });
 
 /**
