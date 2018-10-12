@@ -25,7 +25,11 @@
     "prod:manifest": "npm run webpack            -- --env.mode production  --env.presets manifest",
     "dev:sw":        "npm run webpack-dev-server -- --env.mode development --env.presets serviceworker",
     "dev:manifest":  "npm run webpack-dev-server -- --env.mode development --env.presets manifest",
-    "dev:hot":       "npm run webpack-dev-server -- --env.mode development --hot"
+    "dev:hot":       "npm run webpack-dev-server -- --env.mode development --hot",
+    "webpack-dev-server": "webpack-dev-server --open",
+    "webpack": "webpack --progress",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

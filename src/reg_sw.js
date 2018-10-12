@@ -39,10 +39,9 @@ async function subscribeToPushNotifications(registration) {
             // разрешение на уведомления есть
             // пытаемся подписаться
             try {
-                // подписка на PUSH уведомления получена
+                // подписка на PUSH уведомления
                 const subscription = await registration.pushManager.subscribe(options);
                 console.log('Push registration registered', subscription);
-                //Received subscription
             } catch (e) {
                 console.error('Push registration failed', e);
             }

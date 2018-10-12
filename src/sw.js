@@ -31,19 +31,12 @@ const files = [
 /**
  * Ловим событие "install", установка нашего приложения при первой загрузке
  */
+// self - экземпляр
 self.addEventListener('install', async e => {
     // получаем ссылку на кеш
     const cache = await caches.open('files');
     // сохраняем в кеше файлы приложения и заглушки для данных
     cache.addAll(files);
-    // проверяем создание отдельного потока
-    const appElement = document.getElementById('app');
-    console.log('Checking work in a separate thread...');
-    if ( appElement ){
-        console.log("   - separate thread");
-    } else {
-        console.log("   - general thread");
-    }
 });
 
 /**
@@ -134,3 +127,20 @@ self.addEventListener('fetch', async e => {
     // этот результат будет использован в нашем приложении
     await e.respondWith(res);
 });
+
+// self.addEventListener('activate', function(event) {
+//     event.waitUntil(
+//         createDB()
+//     );
+// });
+
+function createDB() {
+    idb.open('pwa-test', 1, function(upgradeDB) {
+        var store = upgradeDB.createObjectStore('logs', {
+            keyPath: 'id'
+        });
+        // store.put({id: 123, name: 'coke', price: 10.99, quantity: 200});
+        // store.put({id: 321, name: 'pepsi', price: 8.99, quantity: 100});
+        // store.put({id: 222, name: 'water', price: 11.99, quantity: 300});
+    });
+}
